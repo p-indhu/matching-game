@@ -150,22 +150,24 @@ function off() {
 function play(evt) {
     const card = evt.target;
     if(card.nodeName == "LI") {
-        turnCard(card);
-        addtoOpenCards(card);
-        let openCard;
-        if(lastCard !== '') {
-            if(lastCard === card.querySelector("i").classList[1]) {
-                  cardMatched(card);
+        if(!(card.classList.contains("show") || card.classList.contains("match"))) {
+            turnCard(card);
+            addtoOpenCards(card);
+            let openCard;
+            if(lastCard !== '') {
+                if(lastCard === card.querySelector("i").classList[1]) {
+                      cardMatched(card);
+                }
+                else {
+                      cardNotMatched(card)
+                }
             }
             else {
-                  cardNotMatched(card)
+                lastCard = card.querySelector("i").classList[1]
             }
-        }
-        else {
-            lastCard = card.querySelector("i").classList[1]
-        }
-        console.log(lastCard);
-        displayMovesandStars();
+            console.log(lastCard);
+            displayMovesandStars();
+          }
     }
     if(openCards.length == 16) {
           on();
