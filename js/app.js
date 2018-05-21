@@ -118,7 +118,7 @@ function displayMovesandStars() {
 
 }
 
-function on() {
+function finalData() {
     const moves = document.querySelector(".moves");
     let stars = '';
     document.getElementById("finalMoves").innerHTML = moves.textContent;
@@ -136,6 +136,10 @@ function on() {
     }
 
     document.getElementById("finalStars").innerHTML = stars;
+}
+
+function on() {
+    finalData();
     document.getElementById("overlay").style.display = "block";
 }
 
@@ -168,4 +172,25 @@ function play(evt) {
     }
 }
 
+function refresh(evt) {
+    displayCards();
+    openCards = [];
+    lastCard = '';
+    document.querySelector(".moves").textContent = "0";
+    console.log(document.querySelector(".star1").classList);
+    document.querySelector(".star1").classList.remove("far");
+    document.querySelector(".star1").classList.add("fas");
+    console.log(document.querySelector(".star1").classList);
+    console.log(document.querySelector(".star2").classList);
+    document.querySelector(".star2").classList.remove("far");
+    document.querySelector(".star2").classList.add("fas");
+    console.log(document.querySelector(".star2").classList);
+    console.log(document.querySelector(".star3").classList);
+    document.querySelector(".star3").classList.remove("far");
+    document.querySelector(".star3").classList.add("fas");
+    console.log(document.querySelector(".star3").classList);
+}
+
 document.querySelector(".deck").addEventListener('click', play);
+document.querySelector("#nextGame").addEventListener('click', refresh);
+document.querySelector(".restart").addEventListener('click', refresh);
