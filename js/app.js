@@ -140,10 +140,16 @@ function closeWinScreen() {
     document.getElementById("winScreen").style.display = "none";
 }
 
+let stoptimer;
+let first = "true";
 function play(evt) {
     const card = evt.target;
     if(card.nodeName == "LI") {
         if(!(card.classList.contains("show") || card.classList.contains("match"))) {
+            if(first === "true") {
+              startTimer();
+              first = "false";
+            }
             turnCard(card);
             addtoOpenCards(card);
             let openCard;
@@ -160,6 +166,7 @@ function play(evt) {
             }
             displayMovesandStars();
             if(openCards.length == 16) {
+                  stoptimer = true;
                   winScreen();
             }
           }
@@ -170,13 +177,31 @@ function refresh(evt) {
     displayCards();
     openCards = [];
     lastCard = '';
+    first = "true";
+    stoptimer = true;
     document.querySelector(".moves").textContent = "0";
+    document.querySelector(".time").textContent = "0";
     document.querySelector(".star1").classList.remove("far");
     document.querySelector(".star1").classList.add("fas");
     document.querySelector(".star2").classList.remove("far");
     document.querySelector(".star2").classList.add("fas");
     document.querySelector(".star3").classList.remove("far");
     document.querySelector(".star3").classList.add("fas");
+}
+
+function startTimer() {
+    const timer = document.querySelector(".time");
+    let counter = 0;
+    stoptimer = false;
+    const interval = setInterval(function() {
+      if(stoptimer === true) {
+        clearInterval(interval);
+      }
+      else {
+      counter++;
+      timer.textContent = counter;
+      }
+      }, 1000);
 }
 
 document.querySelector(".deck").addEventListener('click', play);
