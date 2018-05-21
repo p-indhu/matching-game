@@ -78,21 +78,17 @@ function cardMatched(card) {
     openCard = document.querySelector(".show")
     openCard.classList.remove("show");
     openCard.classList.add("match");
-    console.log(card.classList);
     lastCard = '';
 }
 
 function cardNotMatched(card) {
     setTimeout(function() {
         card.classList.remove("open", "show");
-        console.log(card.classList);
         openCard = document.querySelector(".show")
         openCard.classList.remove("open", "show");
-        console.log(openCard.classList);
     },500);
     removefromOpenCards(card);
     openCards.pop(lastCard);
-    console.log(openCards);
 }
 
 function displayMovesandStars() {
@@ -104,13 +100,11 @@ function displayMovesandStars() {
         star3.classList.add("far");
     }
     if(parseInt(moves.textContent) >= 25) {
-      console.log(">20");
       const star2 = document.querySelector(".star2");
       star2.classList.remove("fas");
       star2.classList.add("far");
     }
     if(parseInt(moves.textContent) >= 30) {
-      console.log(">25");
       const star1 = document.querySelector(".star1");
       star1.classList.remove("fas");
       star1.classList.add("far");
@@ -134,17 +128,16 @@ function finalData() {
     else {
         stars = "3"
     }
-
     document.getElementById("finalStars").innerHTML = stars;
 }
 
-function on() {
+function winScreen() {
     finalData();
-    document.getElementById("overlay").style.display = "block";
+    document.getElementById("winScreen").style.display = "block";
 }
 
-function off() {
-    document.getElementById("overlay").style.display = "none";
+function closeWinScreen() {
+    document.getElementById("winScreen").style.display = "none";
 }
 
 function play(evt) {
@@ -165,12 +158,11 @@ function play(evt) {
             else {
                 lastCard = card.querySelector("i").classList[1]
             }
-            console.log(lastCard);
             displayMovesandStars();
+            if(openCards.length == 16) {
+                  winScreen();
+            }
           }
-    }
-    if(openCards.length == 16) {
-          on();
     }
 }
 
@@ -179,20 +171,15 @@ function refresh(evt) {
     openCards = [];
     lastCard = '';
     document.querySelector(".moves").textContent = "0";
-    console.log(document.querySelector(".star1").classList);
     document.querySelector(".star1").classList.remove("far");
     document.querySelector(".star1").classList.add("fas");
-    console.log(document.querySelector(".star1").classList);
-    console.log(document.querySelector(".star2").classList);
     document.querySelector(".star2").classList.remove("far");
     document.querySelector(".star2").classList.add("fas");
-    console.log(document.querySelector(".star2").classList);
-    console.log(document.querySelector(".star3").classList);
     document.querySelector(".star3").classList.remove("far");
     document.querySelector(".star3").classList.add("fas");
-    console.log(document.querySelector(".star3").classList);
 }
 
 document.querySelector(".deck").addEventListener('click', play);
 document.querySelector("#nextGame").addEventListener('click', refresh);
 document.querySelector(".restart").addEventListener('click', refresh);
+document.querySelector("#winScreen").addEventListener('click', closeWinScreen);

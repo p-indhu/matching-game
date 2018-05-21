@@ -110,7 +110,7 @@ h1 {
     cursor: pointer;
 }
 
-#overlay {
+#winScreen {
     position: fixed;
     display: none;
     width: 100%;
