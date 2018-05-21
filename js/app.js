@@ -2,8 +2,8 @@
  * Create a list that holds all of your cards
  */
 
-let cards = ['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb',
-            'diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle','bomb'];
+let cards = ['gift','car','anchor','bolt','cube','leaf','bicycle','bomb',
+            'gift','car','anchor','bolt','cube','leaf','bicycle','bomb'];
 
 /*
  * Display the cards on the page
@@ -54,3 +54,118 @@ displayCards();
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+function turnCard(card) {
+    card.classList.add("show" ,"open");
+}
+
+let openCards = new Array();
+let lastCard = '';
+function addtoOpenCards(card) {
+    const classes = card.querySelector("i").classList;
+    openCards.push(classes[1]);
+}
+
+function removefromOpenCards(card) {
+    const classes = card.querySelector("i").classList;
+    openCards.pop(classes[1]);
+    lastCard = '';
+}
+
+function cardMatched(card) {
+    let openCard;
+    card.classList.add("match");
+    card.classList.remove("show");
+    openCard = document.querySelector(".show")
+    openCard.classList.remove("show");
+    openCard.classList.add("match");
+    console.log(card.classList);
+    lastCard = '';
+}
+
+function cardNotMatched(card) {
+    setTimeout(function() {
+        card.classList.remove("open", "show");
+        console.log(card.classList);
+        openCard = document.querySelector(".show")
+        openCard.classList.remove("open", "show");
+        console.log(openCard.classList);
+    },500);
+    removefromOpenCards(card);
+    openCards.pop(lastCard);
+    console.log(openCards);
+}
+
+function displayMovesandStars() {
+    let moves = document.querySelector(".moves");
+    moves.textContent = parseInt(moves.textContent) + 1;
+    if(parseInt(moves.textContent) >= 18) {
+        const star3 = document.querySelector(".star3");
+        star3.classList.remove("fas");
+        star3.classList.add("far");
+    }
+    if(parseInt(moves.textContent) >= 25) {
+      console.log(">20");
+      const star2 = document.querySelector(".star2");
+      star2.classList.remove("fas");
+      star2.classList.add("far");
+    }
+    if(parseInt(moves.textContent) >= 30) {
+      console.log(">25");
+      const star1 = document.querySelector(".star1");
+      star1.classList.remove("fas");
+      star1.classList.add("far");
+    }
+
+}
+
+function on() {
+    const moves = document.querySelector(".moves");
+    let stars = '';
+    document.getElementById("finalMoves").innerHTML = moves.textContent;
+    if(parseInt(moves.textContent) >= 30) {
+        stars = "0";
+    }
+    else if(parseInt(moves.textContent) >= 25) {
+        stars = "1";
+    }
+    else if(parseInt(moves.textContent) >= 18) {
+        stars = "2";
+    }
+    else {
+        stars = "3"
+    }
+
+    document.getElementById("finalStars").innerHTML = stars;
+    document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+    document.getElementById("overlay").style.display = "none";
+}
+
+function play(evt) {
+    const card = evt.target;
+    if(card.nodeName == "LI") {
+        turnCard(card);
+        addtoOpenCards(card);
+        let openCard;
+        if(lastCard !== '') {
+            if(lastCard === card.querySelector("i").classList[1]) {
+                  cardMatched(card);
+            }
+            else {
+                  cardNotMatched(card)
+            }
+        }
+        else {
+            lastCard = card.querySelector("i").classList[1]
+        }
+        console.log(lastCard);
+        displayMovesandStars();
+    }
+    if(openCards.length == 16) {
+          on();
+    }
+}
+
+document.querySelector(".deck").addEventListener('click', play);
