@@ -95,7 +95,7 @@ function displayMovesandStars() {
         star3.classList.remove("fas");
         star3.classList.add("far");
     }
-    if(parseInt(moves.textContent) >= 25) {
+    if(parseInt(moves.textContent) >= 26) {
       const star2 = document.querySelector(".star2");
       star2.classList.remove("fas");
       star2.classList.add("far");
@@ -110,13 +110,15 @@ function displayMovesandStars() {
 
 // Content for the final win-screen
 function finalData() {
+    const finalTime = document.querySelector(".time");
+    document.querySelector("#finalTime").textContent = finalTime.textContent;
     const moves = document.querySelector(".moves");
     let stars = '';
     document.getElementById("finalMoves").innerHTML = moves.textContent;
     if(parseInt(moves.textContent) >= 30) {
         stars = "0";
     }
-    else if(parseInt(moves.textContent) >= 25) {
+    else if(parseInt(moves.textContent) >= 26) {
         stars = "1";
     }
     else if(parseInt(moves.textContent) >= 18) {
