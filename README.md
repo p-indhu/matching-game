@@ -3,12 +3,21 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
+* [Dependencies](#dependencies)
+* [How to play](#how to play)
 * [Contributing](#contributing)
+* [About](#about)
 
 ## Instructions
 
 The project has uses HTML, JavaScript and CSS styling to render a Memory Game.
 To get started, open `index.html`.
+
+## Dependencies
+
+The project uses
+* [Font Awesome](https://use.fontawesome.com/releases/v5.0.13/css/all.css) library.
+* [Google Fonts API](https://fonts.googleapis.com/css?family=Coda)
 
 ## How to play
 
