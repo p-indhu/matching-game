@@ -7,14 +7,21 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+The project has uses HTML, JavaScript and CSS styling to render a Memory Game.
+To get started, open `index.html`.
 
-To get started, open `js/app.js` and start building out the app's functionality
+## How to play
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+* Flips any card over to reveal it.
+* Flip a second card, trying to find a match.
+* Game ends when all the cards are matched.
+* Game can be restarted by clicking the refresh icon on the right corner above the board.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
+This repository is developed for learning experience. Therefore, pull requests most likely will not accepted.
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## About
+
+This project was developed as a part of Grow with Google - Front-End Web Developer nano-degree offered by Udacity.

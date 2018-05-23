@@ -2,20 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Matching Game</title>
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-
     <div class="container">
         <header>
             <h1>Matching Game</h1>
         </header>
 
+        <!-- Displays time since start of game, number of moves played, star rating and restart option -->
         <section class="score-panel">
           <div class="timer">Time (in seconds): <span class="time">0</span></div>
           <ul class="stars">
@@ -31,6 +33,7 @@
         	</div>
         </section>
 
+        <!-- Displays a deck of cards (face down) -->
         <ul class="deck">
             <li class="card">
                 <i class="fa fa-gift"></i>
@@ -82,6 +85,8 @@
             </li>
         </ul>
     </div>
+
+    <!-- Displays the winning statistics -->
     <div id="winScreen">
         <div id="text">
           <p>Congratulations!<p>

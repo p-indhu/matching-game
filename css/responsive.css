@@ -1,0 +1,30 @@
+/* Styles when the screen size is not too large */
+@media screen and (max-width: 680px) {
+    .deck {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        min-height: 100vw;
+        padding: 2%;
+        border-radius: 5px;
+    }
+
+    .deck .card {
+        height: 20vw;
+        width: 20%;
+        margin: 2%;
+    }
+
+    .deck .card.show {
+        font-size: 28px;
+    }
+
+    .deck .card.match {
+        font-size: 28px;
+    }
+
+    .score-panel {
+        width: 80%;
+    }
+}
