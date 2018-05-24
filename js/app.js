@@ -77,10 +77,13 @@ function cardMatched(card) {
 
 // When cards are not matched, close the current and the previous card that is shown
 function cardNotMatched(card) {
+    let cards = document.getElementsByClassName('show');
+    cards[0].classList.add('nomatch');
+    cards[1].classList.add('nomatch');
     setTimeout(function() {
-        card.classList.remove('open', 'show');
-        openCard = document.querySelector('.show')
-        openCard.classList.remove('open', 'show');
+        card.classList.remove('open', 'show', 'nomatch');
+        openCard = document.querySelector('.show');
+        openCard.classList.remove('open', 'show', 'nomatch');
     },500);
     removefromOpenCards(card);
     openCards.pop(lastCard);
@@ -95,12 +98,12 @@ function displayMovesandStars() {
         star3.classList.remove('fas');
         star3.classList.add('far');
     }
-    if(parseInt(moves.textContent) >= 26) {
+    if(parseInt(moves.textContent) >= 30) {
         const star2 = document.querySelector('.star2');
         star2.classList.remove('fas');
         star2.classList.add('far');
     }
-    if(parseInt(moves.textContent) >= 30) {
+    if(parseInt(moves.textContent) >= 36) {
         const star1 = document.querySelector('.star1');
         star1.classList.remove('fas');
         star1.classList.add('far');
@@ -115,10 +118,10 @@ function finalData() {
     const moves = document.querySelector('.moves');
     let stars = '';
     document.getElementById('finalMoves').innerHTML = moves.textContent;
-    if(parseInt(moves.textContent) >= 30) {
+    if(parseInt(moves.textContent) >= 36) {
         stars = '0';
     }
-    else if(parseInt(moves.textContent) >= 26) {
+    else if(parseInt(moves.textContent) >= 30) {
         stars = '1';
     }
     else if(parseInt(moves.textContent) >= 18) {
